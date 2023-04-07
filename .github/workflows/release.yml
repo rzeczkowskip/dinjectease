@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    name: Text
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,6 +17,7 @@ jobs:
           node-version: 14
 
   publish-npm:
+    name: Publish
     needs: test
     runs-on: ubuntu-latest
     steps:
