@@ -1,0 +1,49 @@
+{
+  "name": "dinjectease",
+  "version": "0.1.0",
+  "description": "Tiny DI container to control dependency injection with ease",
+  "main": "dist/Dinjectease.js",
+  "types": "dist/Dinjectease.d.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "lint": "eslint \"*/**/*.{js,ts,tsx}\" --max-warnings=0",
+    "test": "jest --config jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rzeczkowskip/dinjectease"
+  },
+  "keywords": [
+    "container",
+    "dependency",
+    "injection",
+    "di",
+    "inversion",
+    "control"
+  ],
+  "author": "Piotr Rzeczkowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rzeczkowskip/dinjectease/issues"
+  },
+  "homepage": "https://github.com/rzeczkowskip/dinjectease#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^16.18.23",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^29.5.0",
+    "rimraf": "^4.4.1",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.3"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}
