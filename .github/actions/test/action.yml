@@ -1,0 +1,41 @@
+name: Test
+description: Run tests
+
+inputs:
+  coverage:
+    required: false
+    default: '0'
+    description: Run test with coverage (1) or not
+  node-version:
+    required: true
+    description: Node version to use for action
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install
+
+    - name: Lint
+      shell: bash
+      run: yarn lint
+
+    - name: Typescript
+      shell: bash
+      run: yarn run tsc --noEmit
+
+    - if: ${{ inputs.coverage }} != '1'
+      name: Test
+      shell: bash
+      run: yarn test
+
+    - if: ${{ inputs.coverage }} == '1'
+      name: Test coverage
+      shell: bash
+      run: yarn test --coverage
