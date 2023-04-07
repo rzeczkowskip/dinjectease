@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  test:
+    name: Text
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test
+        uses: ./.github/actions/test
+        with:
+          coverage: false
+          node-version: 14
+
+  publish-npm:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - run: yarn install
+      - run: yarn build
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
