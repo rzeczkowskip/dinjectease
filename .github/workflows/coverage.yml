@@ -27,6 +27,8 @@ jobs:
 
     - name: Lint
       run: yarn lint
+    - name: Typescript
+      run: yarn run tsc --noEmit
     - name: Test
       run: yarn test --coverage
     - name: Upload to Codecov
