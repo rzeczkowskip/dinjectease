@@ -12,10 +12,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 14, 16, 18 ]
-
     steps:
       - uses: actions/checkout@v3
 
@@ -23,7 +19,7 @@ jobs:
         uses: ./.github/actions/test
         with:
           coverage: 1
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
 
       - name: Upload to Codecov
         uses: codecov/codecov-action@v2
