@@ -51,7 +51,7 @@ export default class Container {
   }
 
   public get<T = any>(id: Key): T {
-    if (!this.definedKeys[id]) {
+    if (!this.has(id)) {
       throw new UnknownIdError(id);
     }
 
@@ -69,6 +69,10 @@ export default class Container {
     this.values[id] = value;
 
     return value;
+  }
+
+  public has(id: Key): boolean {
+    return this.definedKeys[id] === true;
   }
 
   public get keys(): string[] {

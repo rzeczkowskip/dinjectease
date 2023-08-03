@@ -118,4 +118,17 @@ describe('Dinjectease container', () => {
     expect(() => c.get('factory')).toThrow();
     expect(c.keys).toHaveLength(0);
   });
+
+  it('returns valid boolean for "has" check', () => {
+    const c = new Container();
+
+    c.raw('raw', 'test');
+    c.set('set', () => 'test');
+    c.factory('factory', () => 'test');
+
+    expect(c.has('raw')).toStrictEqual(true);
+    expect(c.has('set')).toStrictEqual(true);
+    expect(c.has('factory')).toStrictEqual(true);
+    expect(c.has('unknown')).toStrictEqual(false);
+  });
 });
