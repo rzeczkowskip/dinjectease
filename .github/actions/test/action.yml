@@ -14,28 +14,29 @@ runs:
   using: composite
   steps:
     - name: Set up Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
+        cache: 'npm'
 
     - name: Install dependencies
       shell: bash
-      run: yarn install
+      run: npm ci
 
     - name: Lint
       shell: bash
-      run: yarn lint
+      run: npm run lint
 
     - name: Typescript
       shell: bash
-      run: yarn run tsc --noEmit
+      run: npm exec tsc --noEmit
 
     - if: ${{ inputs.coverage }} != '1'
       name: Test
       shell: bash
-      run: yarn test
+      run: npm run test
 
     - if: ${{ inputs.coverage }} == '1'
       name: Test coverage
       shell: bash
-      run: yarn test --coverage
+      run: npm run test --coverage
