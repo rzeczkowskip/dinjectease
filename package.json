@@ -1,6 +1,6 @@
 {
   "name": "dinjectease",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Tiny DI container to control dependency injection with ease",
   "main": "dist/Container.js",
   "types": "dist/Container.d.ts",
